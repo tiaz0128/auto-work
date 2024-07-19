@@ -8,7 +8,7 @@ def test_clawing_yes24():
 
     book_info = clawer.get_booK_info()
 
-    with open(".temp/test_clawing_yes24.txt", "w") as f:
+    with open(".temp/yes24.txt", "w") as f:
         f.write(",".join(book_info))
 
     assert book_info

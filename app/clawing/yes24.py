@@ -1,6 +1,7 @@
 import logging
 import requests
 from bs4 import BeautifulSoup
+import urllib.request as req
 
 from Levenshtein import distance as levenshtein_distance
 
@@ -19,7 +20,10 @@ class ClawerYes24:
         book_url = f"https://www.yes24.com/Product/Goods/{book_id}"
         book_soup = self._get_html(book_url)
 
-        return self._get_detail_book_info(book_soup)
+        book_info = self._get_detail_book_info(book_soup)
+        self._download_book_cover_image(book_soup, book_info["title"])
+
+        return book_info.values()
 
     def _get_html(self, url):
         response = requests.get(url, headers={"User-Agent": "Mozilla/5.0"})
@@ -69,10 +73,14 @@ class ClawerYes24:
             "쪽"
         )[0]
 
-        return (
-            title,
-            author,
-            bookCompany,
-            publishDate,
-            page_cnt,
+        return dict(
+            title=title,
+            author=author,
+            bookCompany=bookCompany,
+            publishDate=publishDate,
+            page_cnt=page_cnt,
         )
+
+    def _download_book_cover_image(self, soup, title):
+        img_url = soup.select_one("span.gd_img img.gImg").attrs["src"]
+        req.urlretrieve(img_url, f".temp/{title}.png")
