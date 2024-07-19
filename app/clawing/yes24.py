@@ -67,8 +67,8 @@ class ClawerYes24:
     def _get_detail_book_info(self, soup: BeautifulSoup):
         title = soup.select_one("h2.gd_name").string
         author = soup.select_one("span.gd_auth > a").string
-        bookCompany = soup.select_one("span.gd_pub > a").string
-        publishDate = soup.select_one("span.gd_date").string
+        book_company = soup.select_one("span.gd_pub > a").string
+        publish_date = soup.select_one("span.gd_date").string
         page_cnt = soup.select_one("tbody.b_size > tr:nth-child(2) > td").string.split(
             "쪽"
         )[0]
@@ -76,8 +76,8 @@ class ClawerYes24:
         return dict(
             title=title,
             author=author,
-            bookCompany=bookCompany,
-            publishDate=publishDate,
+            book_company=book_company,
+            publish_date=publish_date,
             page_cnt=page_cnt,
         )
 

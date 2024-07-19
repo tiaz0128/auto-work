@@ -13,6 +13,7 @@ openpyxl = "^3.1.5"
 pillow = "^10.4.0"
 pytest = "^8.2.2"
 python-levenshtein = "^0.25.1"
+selenium = "^4.23.0"
 
 
 [tool.poetry.group.dev.dependencies]
