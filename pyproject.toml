@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "auto-work"
+version = "0.1.0"
+description = ""
+authors = ["tiaz0128 <tiaz0128.dev@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+beautifulsoup4 = "^4.12.3"
+requests = "^2.32.3"
+openpyxl = "^3.1.5"
+pillow = "^10.4.0"
+pytest = "^8.2.2"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.4.2"
+mypy = "^1.10.1"
+isort = "^5.13.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
